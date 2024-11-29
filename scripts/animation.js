@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "Kerlon",
     "an Innovator",
     "an IoT Specialist",
-    "O FODAO",
+    "the FODAO",
     "an Iot autistic",
   ]);
 });
