@@ -18,6 +18,7 @@
       href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap"
       rel="stylesheet"
     />
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   </head>
@@ -119,7 +120,7 @@
             <div class="about__content-details">
               <p class="about__content-details-para">
                 Hey! I'm <strong>Kerlon</strong>, an
-                <strong>IOT</strong> enthusiast and automation specialist at
+                <strong>IOT</strong> enthusiast and automation trainee at
                 TECNICON's Aquário sector. I've worked on
                 <strong>innovative projects</strong> like building automation,
                 CleanFlow, and automated filament dryers,
@@ -263,7 +264,7 @@
           </span>
         </h2>
         <div class="contact__form-container">
-          <form action="#" class="contact__form">
+          <form id="contactForm" class="contact__form" action="https://formsubmit.co/kerlon.ribeiro1227@gmail.com" method="POST">
             <div class="contact__form-field">
               <label class="contact__form-label" for="name">Name</label>
               <input
@@ -280,7 +281,7 @@
               <input
                 required
                 placeholder="Enter Your Email"
-                type="text"
+                type="email"
                 class="contact__form-input"
                 name="email"
                 id="email"
@@ -298,7 +299,7 @@
                 id="message"
               ></textarea>
             </div>
-            <button type="submit" class="btn btn--theme contact__btn">
+            <button type="submit" id="submitBtn" class="btn btn--theme contact__btn">
               Submit
             </button>
           </form>
@@ -348,9 +349,7 @@
         </div>
       </div>
     </footer>
-
     <script src="./scripts/index.js"></script>
     <script src="./scripts/animation.js"></script>
-
   </body>
 </html>
