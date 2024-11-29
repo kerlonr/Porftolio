@@ -92,8 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initTypingEffect("animated-text", [
     "Kerlon",
     "an Innovator",
-    "an IoT Specialist",
-    "the FODAO",
-    "an Iot autistic",
+    "an IoT trainee",
   ]);
 });
