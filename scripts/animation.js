@@ -1,12 +1,12 @@
 gsap.registerPlugin(ScrollTrigger);
 
 // Função para animação do GSAP com ScrollTrigger
-function animateFromLeft(elementClass, duration = 1.5, ease = "power3.out") {
+function animateFromLeft(elementClass) {
   gsap.to(elementClass, {
     x: 0,
     opacity: 1,
-    duration: duration,
-    ease: ease,
+    duration: 1.5,
+    ease: "power3.out",
     scrollTrigger: {
       trigger: elementClass,
       start: "top center",
@@ -17,17 +17,34 @@ function animateFromLeft(elementClass, duration = 1.5, ease = "power3.out") {
 }
 
 // Função para animação de fade-in
-function animateFadeIn(elementClass, duration = 2, ease = "power2.out") {
+function animateFadeIn(elementClass) {
   gsap.to(elementClass, {
     opacity: 1,
-    duration: duration,
-    ease: ease,
+    duration: 1,
+    ease: "power3.out",
     scrollTrigger: {
       trigger: elementClass,
       start: "top center",
       end: "bottom top",
       toggleActions: "play none none reverse",
     },
+    scale: 1, 
+  });
+}
+
+function animateScaleIncrease(elementClass) {
+  gsap.to(elementClass, {
+    scale: 1,
+    opacity: 1,
+    ease: "power3.out",
+    duration: 3,
+    startScale: 0.1,
+    scrollTrigger: {
+      trigger: elementClass,
+      start: "top center",
+      end: "bottom top",
+      toggleActions: "play none none reverse",
+    }
   });
 }
 
@@ -87,6 +104,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Fade-in
   animateFadeIn(".fade-in");
+
+  //Escalona o Home
+  animateScaleIncrease(".scale-element");
 
   // Efeito de digitação
   initTypingEffect("animated-text", [
