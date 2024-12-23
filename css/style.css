@@ -601,7 +601,7 @@ textarea {
 .link-projeto {
   color: var(--primary-color);
   text-decoration: underline;
-  text-weight: 700;
+  font-weight: 700;
 }
 
 .project-details__showcase-img-cont {
