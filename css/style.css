@@ -966,3 +966,49 @@ textarea {
     border-color: transparent;
   }
 }
+
+/* 1️⃣  O contêiner define a largura. Proporção 1000×630 = 1.587 */
+.notebook-frame {
+  position: relative;
+  width: 100%; /* ocupa toda a largura disponível */
+  max-width: 1000px; /* opcional – evita ficar gigante em telas enormes */
+  aspect-ratio: 1.587; /* mantém a altura sempre coerente */
+}
+
+/* Fallback para navegadores antigos (opcional) */
+@supports not (aspect-ratio: 1) {
+  .notebook-frame::before {
+    content: "";
+    display: block;
+    padding-top: 63%; /* 630 ÷ 1000 = 0.63  →  altura proporcional */
+  }
+}
+
+/* 2️⃣  “Tela” – posições em % preservam o alinhamento em qualquer tamanho */
+.notebook-frame__screen {
+  position: absolute;
+  top: 9.6%; /* ajuste manual – depende do seu SVG                */
+  left: 12%; /* idem                                               */                          */
+  /* aspect-ratio: 16 / 9; /* mantém a proporção em qualquer resize      */
+  height: auto; /* é calculada automaticamente                */
+  border: none;
+  border-radius: 6px;
+  z-index: 1;
+}
+.zoomed-iframe {
+  width: 130%;
+  height: 127%;
+  transform: scale(0.6); /* ⬅️  AQUI você define o "zoom out" */
+  transform-origin: top left; /* mantém o canto superior como base */
+  pointer-events: auto;
+  border: none;
+}
+/* 3️⃣  Moldura por cima */
+.notebook-frame__shell {
+  position: absolute;
+  inset: 0; /* top:0 right:0 bottom:0 left:0 */
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none; /* garante que cliques vão para o iframe */
+}
