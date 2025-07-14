@@ -1012,19 +1012,18 @@ textarea {
 /* -----------------------------------
    MOBILE  — troca para o celular
 ----------------------------------- */
-@media (max-width: 767px) {
-  /* 1)  muda a proporção do contêiner para a do telefone  */
+/* @media (max-width: 767px) {
+  
   .cellphone-frame {
-    aspect-ratio: 9 / 10.5; /* ⬅️ ajuste à proporção do seu SVG de celular */
+    aspect-ratio: 9 / 10.5; 
   }
-
-  /* 2)  mostra somente a moldura do celular */
   .shell--laptop {
     display: none;
   }
   .shell--phone {
-    display: block;
+    display: none;
   }
+
   .cellphone-frame__shell {
     position: absolute;
     inset: 0;
@@ -1044,8 +1043,6 @@ textarea {
     border-radius: 26px 30px 60px 46px;
     z-index: 1;
   }
-
-  /* 4)  remove o “zoom out” agressivo do desktop            */
   .zoomed-iframe__cellphone {
     width: 57.8%;
     height: 98.9%;
@@ -1072,3 +1069,4 @@ textarea {
     border-radius: 19px 26px 48px 38px;
   }
 }
+*/
