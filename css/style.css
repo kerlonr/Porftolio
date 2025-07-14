@@ -967,48 +967,108 @@ textarea {
   }
 }
 
-/* 1️⃣  O contêiner define a largura. Proporção 1000×630 = 1.587 */
+/* -----------------------------------
+   DESKTOP (notebook) — como já estava
+----------------------------------- */
 .notebook-frame {
   position: relative;
-  width: 100%; /* ocupa toda a largura disponível */
-  max-width: 1000px; /* opcional – evita ficar gigante em telas enormes */
-  aspect-ratio: 1.587; /* mantém a altura sempre coerente */
+  width: 100%;
+  max-width: 1000px;
+  aspect-ratio: 1.587; /* 1000 × 630 notebook */
 }
 
-/* Fallback para navegadores antigos (opcional) */
-@supports not (aspect-ratio: 1) {
-  .notebook-frame::before {
-    content: "";
-    display: block;
-    padding-top: 63%; /* 630 ÷ 1000 = 0.63  →  altura proporcional */
-  }
-}
-
-/* 2️⃣  “Tela” – posições em % preservam o alinhamento em qualquer tamanho */
 .notebook-frame__screen {
   position: absolute;
-  top: 9.6%; /* ajuste manual – depende do seu SVG                */
-  left: 12%; /* idem                                               */                          */
-  /* aspect-ratio: 16 / 9; /* mantém a proporção em qualquer resize      */
-  height: auto; /* é calculada automaticamente                */
+  top: 9.6%;
+  left: 12%;
+  width: 74%;
+  height: 57%;
   border: none;
   border-radius: 6px;
   z-index: 1;
 }
+
 .zoomed-iframe {
   width: 130%;
   height: 127%;
-  transform: scale(0.6); /* ⬅️  AQUI você define o "zoom out" */
-  transform-origin: top left; /* mantém o canto superior como base */
-  pointer-events: auto;
-  border: none;
+  transform: scale(0.6);
+  transform-origin: top left;
 }
-/* 3️⃣  Moldura por cima */
+
 .notebook-frame__shell {
   position: absolute;
-  inset: 0; /* top:0 right:0 bottom:0 left:0 */
+  inset: 0;
   width: 100%;
   height: 100%;
+  pointer-events: none;
   z-index: 2;
-  pointer-events: none; /* garante que cliques vão para o iframe */
+}
+
+/* apenas notebook no desktop */
+.shell--phone {
+  display: none;
+}
+
+/* -----------------------------------
+   MOBILE  — troca para o celular
+----------------------------------- */
+@media (max-width: 767px) {
+  /* 1)  muda a proporção do contêiner para a do telefone  */
+  .cellphone-frame {
+    aspect-ratio: 9 / 10.5; /* ⬅️ ajuste à proporção do seu SVG de celular */
+  }
+
+  /* 2)  mostra somente a moldura do celular */
+  .shell--laptop {
+    display: none;
+  }
+  .shell--phone {
+    display: block;
+  }
+  .cellphone-frame__shell {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .notebook-frame__screen {
+    position: absolute;
+    top: 2%;
+    left: 22%;
+    width: 57%;
+    height: 98%;
+    transform: none;
+    border: none;
+    border-radius: 26px 30px 60px 46px;
+    z-index: 1;
+  }
+
+  /* 4)  remove o “zoom out” agressivo do desktop            */
+  .zoomed-iframe__cellphone {
+    width: 57.8%;
+    height: 98.9%;
+    transform: none;
+    border-radius: 18px 45px 64px 46px !important;
+  }
+}
+
+@media (max-width: 625px) {
+  .notebook-frame__screen {
+    top: 2%;
+    left: 22.5%;
+    width: 57%;
+    height: 99%;
+    border-radius: 19px 26px 48px 38px;
+  }
+}
+@media (max-width: 480px) {
+  .notebook-frame__screen {
+    top: 2%;
+    left: 22.7%;
+    width: 57%;
+    height: 99%;
+    border-radius: 19px 26px 48px 38px;
+  }
 }
