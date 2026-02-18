@@ -176,6 +176,75 @@ textarea {
   letter-spacing: 1px;
 }
 
+/* GROUPS */
+.skills-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.skills-category__title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  color: #333;
+}
+
+/* TOOLTIP */
+.skills__skill {
+  position: relative;
+  cursor: default;
+}
+
+/* Balão */
+.skills__skill::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 140%;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  background: rgba(20, 20, 20, 0.95);
+  color: #fff;
+  padding: 0.8rem 1rem;
+  border-radius: 0.8rem;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  width: max-content;
+  max-width: 240px;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+  z-index: 20;
+}
+
+/* Setinha */
+.skills__skill::before {
+  content: "";
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: rgba(20, 20, 20, 0.95) transparent transparent transparent;
+  opacity: 0;
+  transition:
+    opacity 0.3s ease,
+    transform 0.25s ease;
+}
+
+/* Hover */
+.skills__skill:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.skills__skill:hover::before {
+  opacity: 1;
+}
+
 /*----------------------------- CONTAINER PRINCIPAL ----------------------------------*/
 
 .main-container {
@@ -254,7 +323,8 @@ textarea {
 /* Hero */
 .home-hero {
   color: var(--text-color);
-  background: linear-gradient(
+  background:
+    linear-gradient(
       to right,
       rgba(241, 241, 241, 0.6),
       rgba(230, 230, 230, 0.6)
@@ -359,7 +429,7 @@ textarea {
 }
 .about__content-details-para {
   font-size: 1.8rem;
-  color: grey;
+  color: #4d4d4d;
   max-width: 60rem;
   line-height: 1.7;
   margin-bottom: 1rem;
@@ -437,7 +507,8 @@ textarea {
 }
 
 .contact {
-  background: linear-gradient(
+  background:
+    linear-gradient(
       to right,
       rgba(241, 241, 241, 0.6),
       rgba(230, 230, 230, 0.6)
@@ -541,7 +612,8 @@ textarea {
 
 .project-cs-hero {
   color: var(--text-color);
-  background: linear-gradient(to right, #fefefe, #f1f1f1),
+  background:
+    linear-gradient(to right, #fefefe, #f1f1f1),
     url(../../assets/svg/common-bg.svg);
   background-size: cover;
   background-position: center;
