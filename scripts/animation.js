@@ -28,7 +28,7 @@ function animateFadeIn(elementClass) {
       end: "bottom top",
       toggleActions: "play none none reverse",
     },
-    scale: 1, 
+    scale: 1,
   });
 }
 
@@ -44,7 +44,7 @@ function animateScaleIncrease(elementClass) {
       start: "top center",
       end: "bottom top",
       toggleActions: "play none none reverse",
-    }
+    },
   });
 }
 
@@ -54,7 +54,7 @@ function initTypingEffect(
   words,
   typingSpeed = 100,
   deleteSpeed = 40,
-  pauseDuration = 2000
+  pauseDuration = 2000,
 ) {
   const animatedTextElement = document.getElementById(elementId);
   let wordIndex = 0;
@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initTypingEffect("animated-text", [
     "Kerlon",
     "an Innovator",
-    "an IoT Trainee",
+    "an IoT Developer",
     "a 3D Maker",
   ]);
 });
