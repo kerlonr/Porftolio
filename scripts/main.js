@@ -1,5 +1,5 @@
 // Comportamentos do portfólio. Sem bibliotecas: tudo com recursos do navegador.
-//   1. Idioma (PT/EN) — textos vêm de scripts/textos.js
+//   1. Idioma (PT/EN) — inglês lido do próprio HTML, português de scripts/textos.js
 //   2. Efeito de digitação no título ("Hey, I'm ...")
 //   3. Elementos aparecendo ao rolar a página
 //   4. Prévias (iframes): carregam só perto da tela e são escaladas para caber
@@ -21,6 +21,15 @@ function idiomaInicial() {
   return navigator.language.toLowerCase().startsWith('pt') ? 'pt' : 'en';
 }
 
+// O inglês vem do HTML (fonte única): lido uma vez, antes de qualquer troca de idioma.
+TEXTOS.en = { titulo: document.title, descricao: document.querySelector('meta[name="description"]').content };
+document.querySelectorAll('[data-i18n]').forEach((el) => (TEXTOS.en[el.dataset.i18n] = el.textContent.trim()));
+document.querySelectorAll('[data-i18n-html]').forEach((el) => (TEXTOS.en[el.dataset.i18nHtml] = el.innerHTML.trim()));
+document.querySelectorAll('[data-i18n-attr]').forEach((el) => {
+  const [atributo, chave] = el.dataset.i18nAttr.split(':');
+  TEXTOS.en[chave] = el.getAttribute(atributo);
+});
+
 let idioma = idiomaInicial();
 
 function aplicarIdioma(novo) {
@@ -31,7 +40,7 @@ function aplicarIdioma(novo) {
   document.querySelector('meta[name="description"]').content = t.descricao;
 
   document.querySelectorAll('[data-i18n]').forEach((el) => (el.textContent = t[el.dataset.i18n]));
-  // Só textos do próprio textos.js (confiáveis) entram como HTML.
+  // Só textos do próprio site (HTML e textos.js, confiáveis) entram como HTML.
   document.querySelectorAll('[data-i18n-html]').forEach((el) => (el.innerHTML = t[el.dataset.i18nHtml]));
   // data-i18n-attr="atributo:chave"
   document.querySelectorAll('[data-i18n-attr]').forEach((el) => {
@@ -104,12 +113,11 @@ const observador = new IntersectionObserver(
 document.querySelectorAll('.revelar').forEach((el) => observador.observe(el));
 
 // ---------- 4. Prévias ----------
-// O iframe é renderizado como uma tela de 1280px e reduzido para caber no espaço disponível.
+// Só os projetos com site têm prévia (iframe); os outros mostram uma ilustração.
+// O iframe é desenhado como uma tela de 1280px e reduzido para caber no espaço disponível.
+const LARGURA_PREVIA = 1280;
 const ajustarTela = new ResizeObserver((entradas) => {
-  for (const e of entradas) {
-    const largura = Number(e.target.dataset.largura) || 1280;
-    e.target.style.setProperty('--escala', String(e.contentRect.width / largura));
-  }
+  for (const e of entradas) e.target.style.setProperty('--escala', String(e.contentRect.width / LARGURA_PREVIA));
 });
 
 // Cada prévia carrega um site inteiro: só busca quando o projeto está a ~1 tela de distância.
@@ -117,7 +125,7 @@ const carregarPrevia = new IntersectionObserver(
   (entradas) => {
     for (const e of entradas) {
       if (!e.isIntersecting) continue;
-      const iframe = e.target.querySelector('iframe[data-src]');
+      const iframe = e.target.querySelector('iframe');
       iframe.src = iframe.dataset.src;
       carregarPrevia.unobserve(e.target);
     }
@@ -125,9 +133,9 @@ const carregarPrevia = new IntersectionObserver(
   { rootMargin: '100% 0px' },
 );
 
-document.querySelectorAll('.tela').forEach((tela) => {
-  ajustarTela.observe(tela);
-  carregarPrevia.observe(tela);
+document.querySelectorAll('.tela iframe[data-src]').forEach((iframe) => {
+  ajustarTela.observe(iframe.parentElement);
+  carregarPrevia.observe(iframe.parentElement);
 });
 
 // ---------- 5. Ano do rodapé ----------

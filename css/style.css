@@ -276,32 +276,13 @@ img {
   /* brilho suave na cor do bloco atrás da foto */
   background: radial-gradient(40% 32% at 50% 18%, color-mix(in srgb, var(--c) 22%, transparent), transparent 70%);
 }
-.anel {
-  position: relative;
-  width: 132px;
-  height: 132px;
-  margin: 0 auto 28px;
-  padding: 6px;
-  border-radius: 50%;
-  overflow: hidden; /* o anel girando não "vaza" a caixa (e não cria rolagem) */
-  animation: surgir 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-}
-/* Anel em degradê girando devagar atrás da foto. */
-.anel::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: conic-gradient(var(--roxo), #ff6fb5, var(--roxo-2), #64d2ff, var(--roxo));
-  animation: girar 6s linear infinite;
-}
 .foto {
-  position: relative;
   width: 120px;
   height: 120px;
+  margin: 0 auto 28px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid var(--fundo);
+  animation: surgir 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 .home h1 {
   font-size: clamp(36px, 7.4vw, 88px);
@@ -445,6 +426,20 @@ img {
   transform: scale(var(--escala, 0.4));
   transform-origin: 0 0;
   pointer-events: none; /* é só uma prévia; o botão "See More" abre o site */
+}
+/* Projeto sem site: ilustração de traço na cor do projeto, com brilho do degradê. */
+.tela .ilustracao {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  color: var(--c);
+  background:
+    radial-gradient(55% 75% at 35% 100%, color-mix(in srgb, var(--c) 26%, transparent), transparent 70%),
+    radial-gradient(55% 75% at 75% 100%, color-mix(in srgb, var(--c2) 22%, transparent), transparent 70%);
+}
+.tela .ilustracao svg {
+  width: auto;
+  height: 62%;
 }
 .etiqueta {
   color: var(--c);
@@ -610,11 +605,6 @@ img {
     opacity: 0;
     transform: translateY(16px);
     filter: blur(6px);
-  }
-}
-@keyframes girar {
-  to {
-    transform: rotate(1turn);
   }
 }
 @keyframes progresso {

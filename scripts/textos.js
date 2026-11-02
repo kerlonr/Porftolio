@@ -1,71 +1,13 @@
-// Textos do site em inglês (en) e português (pt).
-// No HTML, cada elemento traduzível tem data-i18n="chave" (texto puro) ou
-// data-i18n-html="chave" (texto com <strong>/<a>). Atributos usam data-i18n-attr="atributo:chave".
-// O inglês também está escrito direto no HTML: sem JavaScript, o site aparece em inglês.
-// Conferir se nenhuma chave falta: node scripts/checar-textos.mjs
+// Traduções do site.
+//
+// O INGLÊS fica só no index.html: o main.js lê os textos de lá ao abrir a página.
+// Para mudar um texto em inglês, mude no HTML. Para mudar em português, mude aqui.
+//
+// No HTML, cada elemento traduzível tem data-i18n="chave" (texto puro),
+// data-i18n-html="chave" (texto com <strong>/<a>) ou data-i18n-attr="atributo:chave".
+// Conferir se nenhuma chave ficou sem português: node scripts/checar-textos.mjs
 
 const TEXTOS = {
-  en: {
-    titulo: 'Kerlon Ribeiro',
-    descricao: 'IoT and automation developer. Projects, skills and contact of Kerlon Ribeiro.',
-    menuSobre: 'About',
-    menuProjetos: 'Projects',
-    menuContato: 'Contact',
-    curriculo: 'Curriculum',
-    voltarTopo: 'Kerlon Ribeiro, back to top',
-    oiEuSou: "Hey, I'm",
-    lead: 'An IoT enthusiast and automation trainee with a passion for innovative solutions, seamlessly integrating 3D printing technology to drive cutting-edge advancements.',
-    sobreTitulo: 'About Me',
-    sobreSub: 'IoT and automation enthusiast, creating innovative and sustainable tech solutions. Skilled in 3D printing and problem-solving, I transform ideas into impactful results.',
-    conhecaTitulo: 'Get to know me!',
-    conheca1: "Hey! I'm <strong>Kerlon</strong>, an <strong>IoT enthusiast</strong> and <strong>automation trainee</strong> at <strong>TECNICON's Aquário</strong> sector. I've worked on innovative projects like <strong>building automation</strong>, <strong>CleanFlow</strong>, and <strong>automated filament dryers</strong>, combining IoT and 3D printing.",
-    conheca2: "With experience in <strong>Startup Weekend</strong> and a passion for solving challenges, I turn ideas into impactful solutions. Let's connect!",
-    contato: 'Contact',
-    habilidades: 'My Skills',
-    catProgramacao: 'Programming & Systems',
-    catHardware: 'Hardware & Making',
-    dicaHtml: 'Semantic and accessible structuring of web pages applied in real projects.',
-    dicaCss: 'Responsive layouts, animations, and modern UI styling used in production interfaces.',
-    dicaJs: 'Interactive logic and dynamic behavior applied to real-world web applications.',
-    dicaFigma: 'UI/UX prototyping focused on usability and clear visual communication.',
-    dicaCpp: 'Performance-oriented programming applied to embedded and automation systems.',
-    dicaArduino: 'Rapid prototyping and automation using sensors and actuators in practical projects.',
-    dicaEsp32: 'IoT development with wireless communication, including ESP-NOW and Wi-Fi.',
-    dicaRasp: 'Embedded computing applied to system automation and service integration.',
-    dica3d: 'Design and production of functional parts for real automation and IoT solutions.',
-    dicaFusion: 'Technical 3D modeling focused on mechanical and functional components.',
-    dicaRobotica: 'Integration of sensors, actuators, and control logic in applied automation systems.',
-    imp3d: '3D Printing',
-    robotica: 'Robotics',
-    projetosTitulo: 'Projects',
-    projetosSub: 'Some of the personal and professional projects I created, each one with its own case study.',
-    museuEtiqueta: 'Web, at Tecnicon',
-    museu1: 'A project designed to showcase the work my coworkers and I accomplished during our internship at <a href="https://tecnicon.com.br">Tecnicon - Sistemas Gerenciais</a>.',
-    museu2: "Built like a streaming platform, it gathers the projects of Aquário (Tecnicon's automation team), the events we competed in with our medals, the team and a photo gallery.",
-    bifrostEtiqueta: 'IoT landing page',
-    bifrost1: 'A project developed to present <a href="https://bifrost.kerlonr.com.br">Bifrost</a>, an intelligent communication hub designed to connect and manage devices seamlessly and efficiently.',
-    bifrost2: 'Sensors that speak different wireless "languages" (ESP-NOW, LoRa, MQTT) send their messages to gateways, and a Raspberry Pi decides where each message goes, translating between protocols.',
-    visitarSite: 'Visit site',
-    codigo: 'Code',
-    visitarMuseu: 'Visit the Museu Digital site',
-    codigoMuseu: 'Museu Digital source code',
-    visitarBifrost: 'Visit the Bifrost site',
-    codigoBifrost: 'Bifrost landing page source code',
-    acervoTitulo: 'Want to see everything?',
-    acervoTexto: 'Robots, IoT gateways, PLC data collectors, games and web systems, all explained in the Acervo.',
-    acervoBotao: 'Open the Acervo',
-    contatoTitulo: 'Contact',
-    contatoSub: "Feel free to reach out! Whether you have a question, an idea, or just want to connect, I'd love to hear from you.",
-    nome: 'Name',
-    nomePh: 'Enter your name',
-    email: 'Email',
-    emailPh: 'Enter your email',
-    mensagem: 'Message',
-    mensagemPh: 'Enter your message',
-    enviar: 'Send message',
-    rodape: "I'm passionate about technology and innovation, always on the lookout for creative solutions in automation and IoT. I love turning ideas into reality!",
-    trocarIdioma: 'PT: ver em português',
-  },
   pt: {
     titulo: 'Kerlon Ribeiro',
     descricao: 'Desenvolvedor de IoT e automação. Projetos, habilidades e contato de Kerlon Ribeiro.',
@@ -74,8 +16,10 @@ const TEXTOS = {
     menuContato: 'Contato',
     curriculo: 'Currículo',
     voltarTopo: 'Kerlon Ribeiro, voltar ao topo',
+    trocarIdioma: 'EN: view in English',
     oiEuSou: 'Oi, eu sou',
     lead: 'Entusiasta de IoT e estagiário de automação, apaixonado por soluções inovadoras e por integrar impressão 3D para levar as ideias mais longe.',
+
     sobreTitulo: 'Sobre mim',
     sobreSub: 'Entusiasta de IoT e automação, criando soluções tecnológicas inovadoras e sustentáveis. Com experiência em impressão 3D e resolução de problemas, transformo ideias em resultados.',
     conhecaTitulo: 'Prazer, eu sou o Kerlon!',
@@ -98,23 +42,42 @@ const TEXTOS = {
     dicaRobotica: 'Integração de sensores, atuadores e lógica de controle em sistemas de automação.',
     imp3d: 'Impressão 3D',
     robotica: 'Robótica',
+
     projetosTitulo: 'Projetos',
-    projetosSub: 'Alguns dos projetos pessoais e profissionais que criei, cada um com seu estudo de caso.',
-    museuEtiqueta: 'Web, na Tecnicon',
-    museu1: 'Um projeto para mostrar o trabalho que eu e meus colegas fizemos durante o estágio na <a href="https://tecnicon.com.br">Tecnicon - Sistemas Gerenciais</a>.',
-    museu2: 'Feito no estilo de uma plataforma de streaming, reúne os projetos do Aquário (equipe de automação da Tecnicon), os eventos em que competimos com nossas medalhas, a equipe e uma galeria de fotos.',
-    bifrostEtiqueta: 'Landing page de IoT',
-    bifrost1: 'Um projeto criado para apresentar a <a href="https://bifrost.kerlonr.com.br">Bifrost</a>, uma central de comunicação inteligente que conecta e gerencia dispositivos de forma simples e eficiente.',
-    bifrost2: 'Sensores que falam "línguas" sem fio diferentes (ESP-NOW, LoRa, MQTT) mandam mensagens para gateways, e um Raspberry Pi decide para onde cada uma vai, traduzindo entre os protocolos.',
+    projetosSub: 'Meus projetos principais. Todos os outros, de robôs a sites, estão explicados no Acervo.',
     visitarSite: 'Ver site',
     codigo: 'Código',
-    visitarMuseu: 'Ver o site do Museu Digital',
-    codigoMuseu: 'Código do Museu Digital',
+    baixar: 'Baixar',
+    verNoAcervo: 'Ver no Acervo',
+
+    bifrostEtiqueta: 'Landing page de IoT',
+    bifrost1: 'Uma central de comunicação inteligente que conecta e gerencia dispositivos que usam tecnologias sem fio diferentes, de forma simples e eficiente.',
+    bifrost2: 'Sensores que falam "línguas" diferentes (ESP-NOW, LoRa, MQTT) mandam mensagens para gateways, e um Raspberry Pi decide para onde cada uma vai, traduzindo entre os protocolos.',
     visitarBifrost: 'Ver o site da Bifrost',
-    codigoBifrost: 'Código da landing page da Bifrost',
+    codigoBifrost: 'Código da Bifrost',
+
+    atlasEtiqueta: 'Robótica, na SETREM',
+    atlas1: 'O robô do curso de Engenharia de Computação da SETREM: anda, se localiza, fala e mostra seus dados num aplicativo.',
+    atlas2: 'Dividido em três partes: o corpo (motores, GPS, Wi-Fi e telemetria num Raspberry Pi), a cara (rosto animado com voz e conversa por IA) e o controle (app em Flutter que dirige o robô por Bluetooth).',
+    codigoAtlas: 'Código do Atlas',
+    acervoAtlas: 'https://acervo.kerlonr.com.br/projetos/atlas',
+
+    asimovEtiqueta: 'Automação industrial, na Tecnicon',
+    asimov1: 'Um coletor que lê dados de máquinas industriais (CLPs e IHMs) pela rede e envia para o servidor. Funciona com WEG, Siemens, Rockwell, Mitsubishi, Omron e qualquer equipamento Modbus, OPC UA ou MQTT.',
+    asimov2: 'Ele só lê e nunca escreve no CLP, então é seguro para máquinas em produção. Os dados esperam numa fila até chegarem ao servidor, então nada se perde se a rede cair.',
+    acervoAsimov: 'https://acervo.kerlonr.com.br/projetos/asimov',
+
+    camaraEtiqueta: 'Jogo',
+    camara1: 'Jogo 2D de mineração e horror numa mina fictícia perto de Chernobyl, em abril de 1986. Você é um mineiro do Turno C e descobre aos poucos o que existe atrás da Câmara 7.',
+    camara2: 'Feito na Godot em pixel art, com instalador para Windows e atualização automática: o jogo baixa só o conteúdo novo (cerca de 4 MB), confere a integridade e nunca mexe nos seus saves.',
+    baixarCamara: 'Baixar o Câmara 7',
+    codigoCamara: 'Código do Câmara 7',
+
     acervoTitulo: 'Quer ver tudo?',
     acervoTexto: 'Robôs, gateways IoT, coletores de dados de CLP, jogos e sistemas web, todos explicados no Acervo.',
     acervoBotao: 'Abrir o Acervo',
+    acervoLink: 'https://acervo.kerlonr.com.br/',
+
     contatoTitulo: 'Contato',
     contatoSub: 'Fique à vontade para chamar! Seja uma dúvida, uma ideia ou só para trocar uma ideia, vou gostar de ouvir você.',
     nome: 'Nome',
@@ -125,7 +88,6 @@ const TEXTOS = {
     mensagemPh: 'Sua mensagem',
     enviar: 'Enviar mensagem',
     rodape: 'Sou apaixonado por tecnologia e inovação, sempre atrás de soluções criativas em automação e IoT. Adoro transformar ideias em realidade!',
-    trocarIdioma: 'EN: view in English',
   },
 };
 

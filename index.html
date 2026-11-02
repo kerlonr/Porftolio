@@ -43,7 +43,7 @@
     <main>
       <!-- ================= HOME ================= -->
       <section id="home" class="home conteudo">
-        <div class="anel"><img class="foto" src="assets/svg/profile.webp" alt="Kerlon Ribeiro" width="120" height="120" /></div>
+        <img class="foto" src="assets/svg/profile.webp" alt="Kerlon Ribeiro" width="120" height="120" />
         <h1>
           <span data-i18n="oiEuSou">Hey, I'm</span>
           <!-- Linha própria e altura fixa: a palavra digitada não empurra o resto da página. -->
@@ -120,71 +120,105 @@
       </section>
 
       <!-- ================= PROJECTS ================= -->
-      <!-- Cada projeto usa as cores do próprio site: --c (texto/botões) e --c2 (fim do degradê). -->
+      <!-- Os 4 projetos principais; o resto fica no Acervo. Cada um tem sua cor: --c (texto/botões) e --c2 (degradê). -->
       <section id="projects" class="secao conteudo">
         <header class="titulo-secao revelar">
           <h2 data-i18n="projetosTitulo">Projects</h2>
-          <p data-i18n="projetosSub">Some of the personal and professional projects I created, each one with its own case study.</p>
+          <p data-i18n="projetosSub">My main projects. Every other one, from robots to websites, is explained in the Acervo.</p>
         </header>
 
-        <!-- Museu Digital: vermelho do próprio site (#e50914), clareado para ter contraste no preto. -->
-        <article class="projeto revelar" style="--c: #ff5a5f; --c2: #e50914">
-          <div class="tela" data-largura="1280">
-            <iframe data-src="https://museu-digital.vercel.app" title="Museu Digital preview" tabindex="-1" scrolling="no"></iframe>
-          </div>
-          <div class="texto">
-            <p class="etiqueta" data-i18n="museuEtiqueta">Web, at Tecnicon</p>
-            <h3>Museu Digital</h3>
-            <p data-i18n-html="museu1">
-              A project designed to showcase the work my coworkers and I accomplished during our internship at
-              <a href="https://tecnicon.com.br">Tecnicon - Sistemas Gerenciais</a>.
-            </p>
-            <p data-i18n="museu2">
-              Built like a streaming platform, it gathers the projects of Aquário (Tecnicon's automation team), the events
-              we competed in with our medals, the team and a photo gallery.
-            </p>
-            <ul class="chips">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JavaScript</li>
-            </ul>
-            <div class="acoes">
-              <a class="botao" href="https://museu-digital.vercel.app" target="_blank" rel="noreferrer" data-i18n="visitarSite" data-i18n-attr="aria-label:visitarMuseu" aria-label="Visit the Museu Digital site">Visit site</a>
-              <a class="botao contorno" href="https://github.com/kerlonr/Museu-Digital" target="_blank" rel="noreferrer" data-i18n="codigo" data-i18n-attr="aria-label:codigoMuseu" aria-label="Museu Digital source code">Code</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Bifrost: degradê azul → roxo da landing page (#3498db → #9b59b6). -->
+        <!-- Bifrost: degradê azul → roxo da própria landing page (#3498db → #9b59b6). Prévia ao vivo do site. -->
         <article class="projeto revelar" style="--c: #5dade2; --c2: #9b59b6">
-          <div class="tela" data-largura="1280">
+          <div class="tela">
             <iframe data-src="https://bifrost.kerlonr.com.br" title="Bifrost preview" tabindex="-1" scrolling="no"></iframe>
           </div>
           <div class="texto">
             <p class="etiqueta" data-i18n="bifrostEtiqueta">IoT landing page</p>
             <h3>Bifrost</h3>
-            <p data-i18n-html="bifrost1">
-              A project developed to present <a href="https://bifrost.kerlonr.com.br">Bifrost</a>, an intelligent
-              communication hub designed to connect and manage devices seamlessly and efficiently.
-            </p>
-            <p data-i18n="bifrost2">
-              Sensors that speak different wireless "languages" (ESP-NOW, LoRa, MQTT) send their messages to gateways, and a
-              Raspberry Pi decides where each message goes, translating between protocols.
-            </p>
+            <p data-i18n="bifrost1">An intelligent communication hub that connects and manages devices using different wireless technologies, seamlessly and efficiently.</p>
+            <p data-i18n="bifrost2">Sensors that speak different "languages" (ESP-NOW, LoRa, MQTT) send their messages to gateways, and a Raspberry Pi decides where each message goes, translating between protocols.</p>
             <ul class="chips">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JavaScript</li>
+              <li>Python</li>
+              <li>C++</li>
+              <li>ESP32</li>
+              <li>MQTT</li>
             </ul>
             <div class="acoes">
               <a class="botao" href="https://bifrost.kerlonr.com.br" target="_blank" rel="noreferrer" data-i18n="visitarSite" data-i18n-attr="aria-label:visitarBifrost" aria-label="Visit the Bifrost site">Visit site</a>
-              <a class="botao contorno" href="https://github.com/the-bifrost/landing-page" target="_blank" rel="noreferrer" data-i18n="codigo" data-i18n-attr="aria-label:codigoBifrost" aria-label="Bifrost landing page source code">Code</a>
+              <a class="botao contorno" href="https://github.com/the-bifrost" target="_blank" rel="noreferrer" data-i18n="codigo" data-i18n-attr="aria-label:codigoBifrost" aria-label="Bifrost source code">Code</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Atlas: azul-claro, a mesma cor dele no Acervo. -->
+        <article class="projeto revelar" style="--c: #64d2ff; --c2: #0a84ff">
+          <div class="tela">
+            <div class="ilustracao" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="24" y="40" width="72" height="48" rx="10"/><rect x="38" y="50" width="44" height="24" rx="5"/><circle cx="52" cy="62" r="3"/><circle cx="68" cy="62" r="3"/><circle cx="38" cy="96" r="10"/><circle cx="82" cy="96" r="10"/><path d="M60 40V24M52 16a12 12 0 0 1 16 0M47 11a19 19 0 0 1 26 0"/></svg></div>
+          </div>
+          <div class="texto">
+            <p class="etiqueta" data-i18n="atlasEtiqueta">Robotics, at SETREM</p>
+            <h3>Atlas</h3>
+            <p data-i18n="atlas1">The robot of the Computer Engineering course at SETREM: it drives, finds its position, talks and shows its data in an app.</p>
+            <p data-i18n="atlas2">It is split in three parts: the body (motors, GPS, Wi-Fi and telemetry on a Raspberry Pi), the face (an animated face with voice and AI chat) and the controller (a Flutter app that drives it over Bluetooth).</p>
+            <ul class="chips">
+              <li>Python</li>
+              <li>Flutter</li>
+              <li>Raspberry Pi</li>
+              <li>Bluetooth LE</li>
+            </ul>
+            <div class="acoes">
+              <a class="botao" href="https://github.com/setrem-robot/orquestrador" target="_blank" rel="noreferrer" data-i18n="codigo" data-i18n-attr="aria-label:codigoAtlas" aria-label="Atlas source code">Code</a>
+              <a class="botao contorno" href="https://acervo.kerlonr.com.br/en/projetos/atlas" data-i18n-attr="href:acervoAtlas" data-i18n="verNoAcervo">See in the Acervo</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Asimov: amarelo, a mesma cor dele no Acervo. Código privado: só o link do Acervo. -->
+        <article class="projeto revelar" style="--c: #ffd60a; --c2: #ff9f0a">
+          <div class="tela">
+            <div class="ilustracao" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 60h104"/><rect x="14" y="34" width="40" height="52" rx="4"/><path d="M22 42h6M34 42h6M22 78h6M34 78h6"/><circle cx="44" cy="52" r="2"/><circle cx="44" cy="68" r="2"/><rect x="66" y="26" width="46" height="36" rx="4"/><path d="M74 52l8-8 6 5 10-12M89 62v12M80 74h18"/></svg></div>
+          </div>
+          <div class="texto">
+            <p class="etiqueta" data-i18n="asimovEtiqueta">Industrial automation, at Tecnicon</p>
+            <h3>Asimov</h3>
+            <p data-i18n="asimov1">A collector that reads data from industrial machines (PLCs and HMIs) over the network and sends it to the server. It works with WEG, Siemens, Rockwell, Mitsubishi, Omron and any Modbus, OPC UA or MQTT device.</p>
+            <p data-i18n="asimov2">It only reads and never writes to the PLC, so it is safe for machines in production. Data waits in a queue until it reaches the server, so nothing is lost if the network drops.</p>
+            <ul class="chips">
+              <li>Python</li>
+              <li>Modbus</li>
+              <li>OPC UA</li>
+              <li>Redis</li>
+            </ul>
+            <div class="acoes">
+              <a class="botao" href="https://acervo.kerlonr.com.br/en/projetos/asimov" data-i18n-attr="href:acervoAsimov" data-i18n="verNoAcervo">See in the Acervo</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Câmara 7: vermelho e laranja de radiação, a cor dele no Acervo. -->
+        <article class="projeto revelar" style="--c: #ff453a; --c2: #ff9f0a">
+          <div class="tela">
+            <div class="ilustracao" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 104V58a42 42 0 0 1 84 0v46"/><path d="M32 104V60a28 28 0 0 1 56 0v44"/><path d="M8 104h104M40 92h40M44 104l4-12M76 104l-4-12"/><circle cx="60" cy="66" r="4"/><path d="M60 56a10 10 0 0 0-8.7 5M68.7 61A10 10 0 0 0 60 56M51.3 71a10 10 0 0 0 17.4 0"/></svg></div>
+          </div>
+          <div class="texto">
+            <p class="etiqueta" data-i18n="camaraEtiqueta">Game</p>
+            <h3>Câmara 7</h3>
+            <p data-i18n="camara1">A 2D mining and horror game set in a fictional mine near Chernobyl, April 1986. You play a Shift C miner and slowly uncover what lies behind Chamber 7.</p>
+            <p data-i18n="camara2">Built in Godot in pixel art, with a Windows installer and automatic updates: the game downloads only the new content (about 4 MB), checks its integrity and never touches your saves.</p>
+            <ul class="chips">
+              <li>Godot</li>
+              <li>GDScript</li>
+              <li>Pixel art</li>
+            </ul>
+            <div class="acoes">
+              <a class="botao" href="https://github.com/kerlonr/camara-7/releases/latest" target="_blank" rel="noreferrer" data-i18n="baixar" data-i18n-attr="aria-label:baixarCamara" aria-label="Download Câmara 7">Download</a>
+              <a class="botao contorno" href="https://github.com/kerlonr/camara-7" target="_blank" rel="noreferrer" data-i18n="codigo" data-i18n-attr="aria-label:codigoCamara" aria-label="Câmara 7 source code">Code</a>
             </div>
           </div>
         </article>
 
         <!-- Todos os outros projetos ficam explicados no Acervo. -->
-        <a class="acervo revelar" href="https://acervo.kerlonr.com.br">
+        <a class="acervo revelar" href="https://acervo.kerlonr.com.br/en/" data-i18n-attr="href:acervoLink">
           <span>
             <strong data-i18n="acervoTitulo">Want to see everything?</strong>
             <span data-i18n="acervoTexto">Robots, IoT gateways, PLC data collectors, games and web systems, all explained in the Acervo.</span>
