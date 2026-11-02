@@ -1,355 +1,231 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kerlon Ribeiro</title>
+    <meta name="description" content="IoT and automation developer. Projects, skills and contact of Kerlon Ribeiro." />
+    <meta name="theme-color" content="#000000" />
+    <meta property="og:title" content="Kerlon Ribeiro" />
+    <meta property="og:description" content="IoT and automation developer. Projects, skills and contact." />
+    <meta property="og:image" content="https://i.ibb.co/Zg8scLD/Design-sem-nome-1.png" />
+    <link rel="icon" href="https://i.ibb.co/Zg8scLD/Design-sem-nome-1.png" />
+    <!-- Fonte servida pelo próprio site (mais rápido que o Google Fonts). -->
+    <link rel="preload" href="assets/fonts/instrument-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Kerlon Ribeiro</title>
-  <link rel="icon" href="https://i.ibb.co/Zg8scLD/Design-sem-nome-1.png" type="image/x-icon">
-  <link rel="stylesheet" href="css/style.css" />
-  <meta property="og:image" content="https://i.ibb.co/Zg8scLD/Design-sem-nome-1.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap"
-    rel="stylesheet" />
-  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-</head>
-
-<body>
-  <header class="header">
-    <div class="header__content">
-      <div class="header__logo-container">
-        <div class="header__logo-img-cont">
-          <img src="./assets/svg/profile.webp" alt="Ram Maheshwari Logo Image" class="header__logo-img" />
-        </div>
-        <span class="header__logo-sub">Kerlon Ribeiro</span>
+  <body>
+    <!-- ================= BARRA DO TOPO ================= -->
+    <header class="barra">
+      <div class="conteudo linha">
+        <a class="marca" href="#home" aria-label="Kerlon Ribeiro, back to top">
+          <img src="assets/svg/profile.webp" alt="" width="28" height="28" />
+          <span>Kerlon Ribeiro</span>
+        </a>
+        <nav aria-label="Menu">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+          <a class="botao pequeno" href="assets/files/Curriculum.pdf" download="Kerlon-Ribeiro.pdf">Curriculum</a>
+        </nav>
       </div>
-      <div class="header__main">
-        <ul class="header__links">
-          <li class="header__link-wrapper">
-            <a href="#home" class="header__link"> Home </a>
-          </li>
-          <li class="header__link-wrapper">
-            <a href="#about" class="header__link">About </a>
-          </li>
-          <li class="header__link-wrapper">
-            <a href="#projects" class="header__link">
-              Projects
-            </a>
-          </li>
-          <li class="header__link-wrapper">
-            <a href="#contact" class="header__link"> Contact </a>
-          </li>
-          <li class="header__link-wrapper">
-            <a href="assets/files/Curriculum.pdf" class="header__link" download="Kerlon-Ribeiro.pdf"> Curriculum </a>
-          </li>
-        </ul>
-        <div class="header__main-ham-menu-cont">
-          <img src="./assets/svg/ham-menu.svg" alt="hamburger menu" class="header__main-ham-menu" />
-          <img src="./assets/svg/ham-menu-close.svg" alt="hamburger menu close"
-            class="header__main-ham-menu-close d-none" />
-        </div>
-      </div>
-    </div>
-    <div class="header__sm-menu">
-      <div class="header__sm-menu-content">
-        <ul class="header__sm-menu-links">
-          <li class="header__sm-menu-link">
-            <a href="#home"> Home </a>
-          </li>
+    </header>
 
-          <li class="header__sm-menu-link">
-            <a href="#about"> About </a>
-          </li>
-
-          <li class="header__sm-menu-link">
-            <a href="#projects"> Projects </a>
-          </li>
-
-          <li class="header__sm-menu-link">
-            <a href="#contact"> Contact </a>
-          </li>
-          <li class="header__sm-menu-link">
-            <a href="assets/files/Curriculum.pdf" class="header__link" download="Kerlon-Ribeiro.pdf"> Curriculum </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </header>
-  <section id="home" class="home-hero fade-in">
-    <div class="home-hero__content">
-      <h1 class="heading-primary">Hey, i'm <span id="animated-text"></span></h1>
-      <div class="home-hero__info">
-        <p class="text-primary">
-          An IoT enthusiast and automation trainee with a passion for
-          innovative solutions, seamlessly integrating 3D printing technology
-          to drive cutting-edge advancements.
+    <main>
+      <!-- ================= HOME ================= -->
+      <!-- A única animação de entrada: o título "nasce" e a palavra final é digitada. -->
+      <section id="home" class="home conteudo" style="--c: #ff9f0a">
+        <img class="foto" src="assets/svg/profile.webp" alt="Kerlon Ribeiro" width="120" height="120" />
+        <h1>
+          Hey, I'm
+          <!-- Linha própria e altura fixa: a palavra digitada não empurra o resto da página. -->
+          <span class="linha-digitada"><span class="digitando" id="digitando">Kerlon</span><span class="cursor" aria-hidden="true"></span></span>
+        </h1>
+        <p class="lead">
+          An IoT enthusiast and automation trainee with a passion for innovative solutions, seamlessly integrating 3D
+          printing technology to drive cutting-edge advancements.
         </p>
-      </div>
-      <div class="home-hero__cta">
-        <a href="./#projects" class="btn btn--bg">Projects</a>
-      </div>
-    </div>
-    <div class="home-hero__mouse-scroll-cont">
-      <div class="mouse"></div>
-    </div>
-  </section>
-  <section id="about" class="about sec-pad">
-    <div class="main-container from-left">
-      <h2 class="heading heading-sec heading-sec__mb-med">
-        <span class="heading-sec__main">About Me</span>
-        <span class="heading-sec__sub">
-          IoT and automation enthusiast, creating innovative and sustainable tech solutions. Skilled in 3D printing and
-          problem-solving, I transform ideas into impactful results.
-        </span>
-      </h2>
-      <div class="about__content">
-        <div class="about__content-main">
-          <h3 class="about__content-title">Get to know me!</h3>
-          <div class="about__content-details">
-            <p class="about__content-details-para">
-              Hey! I'm <strong>Kerlon</strong>, an
-              <strong>IOT</strong> enthusiast and automation trainee at
-              TECNICON's Aquário sector. I've worked on
-              <strong>innovative projects</strong> like building automation,
-              CleanFlow, and automated filament dryers,
-              <strong>combining IoT and 3D printing.</strong>
-            </p>
-            <p class="about__content-details-para">
-              With experience in Startup Weekend and a passion for solving
-              challenges,<strong>
-                I turn ideas into impactful solutions. Let's connect!</strong>
-            </p>
-          </div>
-          <a href="./#contact" class="btn btn--med btn--theme dynamicBgClr">Contact</a>
+        <div class="acoes">
+          <a class="botao grande" href="#projects">Projects</a>
+          <a class="botao grande contorno" href="assets/files/Curriculum.pdf" download="Kerlon-Ribeiro.pdf">Curriculum</a>
         </div>
-        <div class="about__content-skills">
-          <h3 class="about__content-title">My Skills</h3>
+      </section>
 
-          <div class="skills-group">
+      <!-- ================= ABOUT ================= -->
+      <section id="about" class="secao conteudo">
+        <header class="titulo-secao">
+          <h2>About Me</h2>
+          <p>
+            IoT and automation enthusiast, creating innovative and sustainable tech solutions. Skilled in 3D printing and
+            problem-solving, I transform ideas into impactful results.
+          </p>
+        </header>
 
-            <div class="skills-category">
-              <h4 class="skills-category__title">Frontend</h4>
-              <div class="skills">
-                <div class="skills__skill"
-                  data-tooltip="Semantic and accessible structuring of web pages applied in real projects.">
-                  HTML</div>
-                <div class="skills__skill"
-                  data-tooltip="Responsive layouts, animations, and modern UI styling used in production interfaces.">
-                  CSS</div>
-                <div class="skills__skill"
-                  data-tooltip="Interactive logic and dynamic behavior applied to real-world web applications.">
-                  JavaScript</div>
-                <div class="skills__skill"
-                  data-tooltip="UI/UX prototyping focused on usability and clear visual communication.">
-                  Figma</div>
-              </div>
-            </div>
-
-            <div class="skills-category">
-              <h4 class="skills-category__title">Programming & Systems</h4>
-              <div class="skills">
-                <div class="skills__skill"
-                  data-tooltip="Performance-oriented programming applied to embedded and automation systems.">C++
-                </div>
-                <div class="skills__skill"
-                  data-tooltip="Rapid prototyping and automation using sensors and actuators in practical projects.">
-                  Arduino</div>
-                <div class="skills__skill"
-                  data-tooltip="IoT development with wireless communication, including ESP-NOW and Wi-Fi.">
-                  ESP32</div>
-                <div class="skills__skill"
-                  data-tooltip="Embedded computing applied to system automation and service integration.">
-                  Raspberry Pi</div>
-              </div>
-            </div>
-
-            <div class="skills-category">
-              <h4 class="skills-category__title">Hardware & Making</h4>
-              <div class="skills">
-                <div class="skills__skill"
-                  data-tooltip="Design and production of functional parts for real automation and IoT solutions.">
-                  3D Printing</div>
-                <div class="skills__skill"
-                  data-tooltip="Technical 3D modeling focused on mechanical and functional components.">
-                  Fusion360</div>
-                <div class="skills__skill"
-                  data-tooltip="Integration of sensors, actuators, and control logic in applied automation systems.">
-                  Robotics</div>
-              </div>
-            </div>
-
+        <div class="sobre">
+          <div class="bloco">
+            <h3>Get to know me!</h3>
+            <p>
+              Hey! I'm <strong>Kerlon</strong>, an <strong>IoT enthusiast</strong> and
+              <strong>automation trainee</strong> at <strong>TECNICON's Aquário</strong> sector. I've worked on innovative
+              projects like <strong>building automation</strong>, <strong>CleanFlow</strong>, and
+              <strong>automated filament dryers</strong>, combining IoT and 3D printing.
+            </p>
+            <p>
+              With experience in <strong>Startup Weekend</strong> and a passion for solving challenges, I turn ideas into
+              impactful solutions. Let's connect!
+            </p>
+            <a class="botao contorno" href="#contact" style="--c: #f5f5f7">Contact</a>
           </div>
 
+          <div class="bloco">
+            <h3>My Skills</h3>
+            <!-- Cada categoria tem uma cor. O texto de data-dica aparece ao passar o mouse ou focar. -->
+            <div class="categoria" style="--c: #0a84ff">
+              <h4>Frontend</h4>
+              <ul class="chips">
+                <li tabindex="0" data-dica="Semantic and accessible structuring of web pages applied in real projects.">HTML</li>
+                <li tabindex="0" data-dica="Responsive layouts, animations, and modern UI styling used in production interfaces.">CSS</li>
+                <li tabindex="0" data-dica="Interactive logic and dynamic behavior applied to real-world web applications.">JavaScript</li>
+                <li tabindex="0" data-dica="UI/UX prototyping focused on usability and clear visual communication.">Figma</li>
+              </ul>
+            </div>
+            <div class="categoria" style="--c: #30d158">
+              <h4>Programming &amp; Systems</h4>
+              <ul class="chips">
+                <li tabindex="0" data-dica="Performance-oriented programming applied to embedded and automation systems.">C++</li>
+                <li tabindex="0" data-dica="Rapid prototyping and automation using sensors and actuators in practical projects.">Arduino</li>
+                <li tabindex="0" data-dica="IoT development with wireless communication, including ESP-NOW and Wi-Fi.">ESP32</li>
+                <li tabindex="0" data-dica="Embedded computing applied to system automation and service integration.">Raspberry Pi</li>
+              </ul>
+            </div>
+            <div class="categoria" style="--c: #ff9f0a">
+              <h4>Hardware &amp; Making</h4>
+              <ul class="chips">
+                <li tabindex="0" data-dica="Design and production of functional parts for real automation and IoT solutions.">3D Printing</li>
+                <li tabindex="0" data-dica="Technical 3D modeling focused on mechanical and functional components.">Fusion360</li>
+                <li tabindex="0" data-dica="Integration of sensors, actuators, and control logic in applied automation systems.">Robotics</li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </section>
-  <section id="projects" class="projects sec-pad">
-    <div class="main-container from-left-2">
-      <h2 class="heading heading-sec heading-sec__mb-bg">
-        <span class="heading-sec__main">Projects</span>
-        <span class="heading-sec__sub">
-          Here you will find some of the personal and professional projects
-          that I created with each project containing its own case study
-        </span>
-      </h2>
+      </section>
 
-      <div class="projects__content">
-        <div class="projects__row from_left_project_1">
-          <div class="notebook-frame cellphone-frame">
-            <!-- site -->
-            <iframe src="https://museu-digital.vercel.app" loading="lazy"
-              class="notebook-frame__screen cellphone-frame__screen zoomed-iframe"></iframe>
+      <!-- ================= PROJECTS ================= -->
+      <section id="projects" class="secao conteudo">
+        <header class="titulo-secao">
+          <h2>Projects</h2>
+          <p>Some of the personal and professional projects I created, each one with its own case study.</p>
+        </header>
 
-            <!-- 💻 moldura notebook (desktop) -->
-            <img src="./assets/svg/notebook-frame.svg" alt="" class="notebook-frame__shell shell--laptop">
-
-            <!-- 📱 moldura celular (mobile) -->
-            <img src="./assets/svg/cellphone-frame.svg" alt="" class=" cellphone-frame__shell shell--phone">
+        <!-- Cada projeto: prévia ao vivo do site (iframe) dentro de uma "tela" + explicação. -->
+        <article class="projeto revelar" style="--c: #ff5a5f">
+          <div class="tela" data-largura="1280">
+            <iframe data-src="https://museu-digital.vercel.app" title="Museu Digital preview" tabindex="-1"></iframe>
           </div>
-
-          <div class="projects__row-content">
-            <h3 class="projects__row-content-title">Museu Digital</h3>
-            <p class="projects__row-content-desc">
+          <div class="texto">
+            <p class="etiqueta">Web, at Tecnicon</p>
+            <h3>Museu Digital</h3>
+            <p>
               A project designed to showcase the work my coworkers and I accomplished during our internship at
-              <a class="link-projeto" href="https://tecnicon.com.br">Tecnicon
-                - Sistemas Gerenciais.</a>
+              <a href="https://tecnicon.com.br">Tecnicon - Sistemas Gerenciais</a>.
             </p>
-            <div class="skills">
-              <div class="skills__skill">HTML</div>
-              <div class="skills__skill">CSS</div>
-              <div class="skills__skill">JavaScript</div>
-            </div>
-            <a href="https://museu-digital.vercel.app" class="btn btn--med btn--theme dynamicBgClr" target="_blank">See
-              More</a>
-          </div>
-        </div>
-        <div class="projects__row from_left_project_1">
-          <div class="notebook-frame cellphone-frame">
-            <!-- site -->
-            <iframe src="https://bifrost.kerlonr.com.br" loading="lazy"
-              class="notebook-frame__screen cellphone-frame__screen zoomed-iframe"></iframe>
-
-            <!-- 💻 moldura notebook (desktop) -->
-            <img src="./assets/svg/notebook-frame.svg" alt="" class="notebook-frame__shell shell--laptop">
-
-            <!-- 📱 moldura celular (mobile) -->
-            <img src="./assets/svg/cellphone-frame.svg" alt="" class=" cellphone-frame__shell shell--phone">
-          </div>
-
-          <div class="projects__row-content">
-            <h3 class="projects__row-content-title">Bifrost</h3>
-            <p class="projects__row-content-desc">
-              A project developed to present <a class="link-projeto" href="https://bifrost.kerlonr.com.br">Bifrost</a>,
-              an intelligent communication hub designed to connect and manage
-              devices seamlessly and efficiently.
+            <p>
+              Built like a streaming platform, it gathers the projects of Aquário (Tecnicon's automation team), the events
+              we competed in with our medals, the team and a photo gallery.
             </p>
-            <div class="skills">
-              <div class="skills__skill">HTML</div>
-              <div class="skills__skill">CSS</div>
-              <div class="skills__skill">JavaScript</div>
+            <ul class="chips">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+            </ul>
+            <div class="acoes">
+              <a class="botao" href="https://museu-digital.vercel.app" target="_blank" rel="noreferrer" aria-label="Visit the Museu Digital site">Visit site</a>
+              <a class="botao contorno" href="https://github.com/kerlonr/Museu-Digital" target="_blank" rel="noreferrer" aria-label="Museu Digital source code">Code</a>
             </div>
-            <a href="https://bifrost.kerlonr.com.br" class="btn btn--med btn--theme dynamicBgClr" target="_blank">See
-              More</a>
           </div>
-        </div>
-        <!--
-        <div class="projects__row from_left_project_3">
-          <div class="projects__row-img-cont">
-            <img src="./assets/png/museudigital.png" alt="Software Screenshot" class="projects__row-img"
-              loading="lazy" />
+        </article>
+
+        <article class="projeto revelar" style="--c: #30d158">
+          <div class="tela" data-largura="1280">
+            <iframe data-src="https://bifrost.kerlonr.com.br" title="Bifrost preview" tabindex="-1"></iframe>
           </div>
-          <div class="projects__row-content">
-            <h3 class="projects__row-content-title">Project 3</h3>
-            <p class="projects__row-content-desc">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic
-              facilis tempora, explicabo quae quod deserunt eius sapiente
-              praesentium.
+          <div class="texto">
+            <p class="etiqueta">IoT landing page</p>
+            <h3>Bifrost</h3>
+            <p>
+              A project developed to present <a href="https://bifrost.kerlonr.com.br">Bifrost</a>, an intelligent
+              communication hub designed to connect and manage devices seamlessly and efficiently.
             </p>
-            <div class="skills">
-              <div class="skills__skill">HTML</div>
-              <div class="skills__skill">CSS</div>
-              <div class="skills__skill">JavaScript</div>
+            <p>
+              Sensors that speak different wireless "languages" (ESP-NOW, LoRa, MQTT) send their messages to gateways, and a
+              Raspberry Pi decides where each message goes, translating between protocols.
+            </p>
+            <ul class="chips">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+            </ul>
+            <div class="acoes">
+              <a class="botao" href="https://bifrost.kerlonr.com.br" target="_blank" rel="noreferrer" aria-label="Visit the Bifrost site">Visit site</a>
+              <a class="botao contorno" href="https://github.com/the-bifrost/landing-page" target="_blank" rel="noreferrer" aria-label="Bifrost landing page source code">Code</a>
             </div>
-            <a href="./project-3.html" class="btn btn--med btn--theme dynamicBgClr" target="_blank">See More</a>
           </div>
-        </div>
-        -->
-      </div>
-    </div>
-  </section>
-  <section id="contact" class="contact sec-pad dynamicBg">
-    <div class="main-container">
-      <h2 class="heading heading-sec heading-sec__mb-med">
-        <span class="heading-sec__main heading-sec__main--lt">Contact</span>
-        <span class="heading-sec__sub heading-sec__sub--lt">
-          Feel free to reach out! Whether you have a question, an idea, or just want to connect, I'd love to hear from
-          you.
-        </span>
-      </h2>
-      <div class="contact__form-container">
-        <form id="contactForm" class="contact__form" action="https://formsubmit.co/kerlon.ribeiro1227@gmail.com"
-          method="POST">
-          <div class="contact__form-field">
-            <label class="contact__form-label" for="name">Name</label>
-            <input required placeholder="Enter Your Name" type="text" class="contact__form-input" name="name"
-              id="name" />
-          </div>
-          <div class="contact__form-field">
-            <label class="contact__form-label" for="email">Email</label>
-            <input required placeholder="Enter Your Email" type="email" class="contact__form-input" name="email"
-              id="email" />
-          </div>
-          <div class="contact__form-field">
-            <label class="contact__form-label" for="message">Message</label>
-            <textarea required cols="30" rows="10" class="contact__form-input" placeholder="Enter Your Message"
-              name="message" id="message"></textarea>
-          </div>
-          <button type="submit" id="submitBtn" class="btn btn--theme contact__btn">
-            Submit
-          </button>
+        </article>
+
+        <!-- Todos os outros projetos ficam explicados no Acervo. -->
+        <a class="acervo revelar" href="https://acervo.kerlonr.com.br">
+          <span>
+            <strong>Want to see everything?</strong>
+            Robots, IoT gateways, PLC data collectors, games and web systems, all explained in the Acervo.
+          </span>
+          <span class="botao" style="--c: #f5f5f7">Open the Acervo</span>
+        </a>
+      </section>
+
+      <!-- ================= CONTACT ================= -->
+      <section id="contact" class="secao conteudo">
+        <header class="titulo-secao">
+          <h2>Contact</h2>
+          <p>Feel free to reach out! Whether you have a question, an idea, or just want to connect, I'd love to hear from you.</p>
+        </header>
+
+        <!-- O formulário é enviado pelo FormSubmit direto para o meu e-mail (sem servidor próprio). -->
+        <form class="contato" action="https://formsubmit.co/kerlon.ribeiro1227@gmail.com" method="POST">
+          <label>
+            Name
+            <input required type="text" name="name" placeholder="Enter your name" autocomplete="name" />
+          </label>
+          <label>
+            Email
+            <input required type="email" name="email" placeholder="Enter your email" autocomplete="email" />
+          </label>
+          <label class="inteiro">
+            Message
+            <textarea required name="message" rows="6" placeholder="Enter your message"></textarea>
+          </label>
+          <button type="submit" class="botao grande" style="--c: #ff9f0a">Send message</button>
         </form>
-      </div>
-    </div>
-  </section>
-  <footer class="main-footer">
-    <div class="main-container">
-      <div class="main-footer__upper">
-        <div class="main-footer__row main-footer__row-1">
-          <h2 class="heading heading-sm main-footer__heading-sm">
-            <span>Social</span>
-          </h2>
-          <div class="main-footer__social-cont">
-            <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/kerlon-ribeiro-992856285/">
-              <img class="main-footer__icon" src="./assets/png/linkedin-ico.png" alt="icon" />
-            </a>
-            <a target="_blank" rel="noreferrer" href="https://github.com/kerlonr">
-              <img class="main-footer__icon" src="./assets/png/github-ico.png" alt="icon" />
-            </a>
-            <a target="_blank" rel="noreferrer" href="https://www.instagram.com/kerlonn.r/">
-              <img class="main-footer__icon main-footer__icon--mr-none" src="./assets/png/insta-ico.png" alt="icon" />
-            </a>
-          </div>
-        </div>
-        <div class="main-footer__row main-footer__row-2">
-          <h4 class="heading heading-sm text-lt">Kerlon Ribeiro</h4>
+      </section>
+    </main>
+
+    <!-- ================= RODAPÉ ================= -->
+    <footer class="conteudo rodape">
+      <div>
+        <strong>Kerlon Ribeiro</strong>
+        <p>
           I'm passionate about technology and innovation, always on the lookout for creative solutions in automation and
           IoT. I love turning ideas into reality!
-          </p>
-        </div>
+        </p>
       </div>
-      <div class="main-footer__lower">
-        &copy; Copyright 2024. Made by
-        <a rel="noreferrer" target="_blank" href="">Kerlon Ribeiro</a>
-      </div>
-    </div>
-  </footer>
-  <script src="./scripts/index.js"></script>
-  <script src="./scripts/animation.js"></script>
-</body>
+      <nav aria-label="Social">
+        <a href="https://www.linkedin.com/in/kerlon-ribeiro-992856285/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://github.com/kerlonr" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.instagram.com/kerlonn.r/" target="_blank" rel="noreferrer">Instagram</a>
+      </nav>
+      <p class="copyright">© <span id="ano">2026</span> Kerlon Ribeiro</p>
+    </footer>
 
+    <script src="scripts/main.js"></script>
+  </body>
 </html>
