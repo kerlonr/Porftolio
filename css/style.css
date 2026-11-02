@@ -37,7 +37,10 @@
   --texto-2: #c7c7cc;
   --secundario: #86868b;
   --divisoria: #2c2c2e;
-  --c: #f5f5f7; /* cor do bloco atual; cada seção/projeto troca */
+  --roxo: #bf5af2; /* cor principal do site (combina com o fundo da foto) */
+  --roxo-2: #7d5fff; /* segunda cor dos degradês */
+  --c: var(--roxo); /* cor do bloco atual; projetos e categorias trocam */
+  --c2: var(--roxo-2);
   color-scheme: dark;
 }
 
@@ -50,6 +53,7 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-width: none; /* sem barra de rolagem visível (Firefox) */
   scroll-padding-top: 72px; /* a barra fixa não cobre o título ao clicar no menu */
 }
 
@@ -59,6 +63,10 @@ body {
   font-family: 'Instrument Sans', -apple-system, 'Segoe UI', sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+}
+
+html::-webkit-scrollbar {
+  display: none; /* sem barra de rolagem visível (Chrome, Edge, Safari) */
 }
 
 a {
@@ -205,8 +213,59 @@ img {
   font-size: 14px;
   color: #d2d2d7;
 }
+.barra nav a:not(.botao) {
+  position: relative;
+}
+.barra nav a:not(.botao)::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--roxo);
+  transform: scaleX(0);
+  transition: transform 0.25s;
+}
 .barra nav a:not(.botao):hover {
   color: var(--texto);
+}
+.barra nav a:not(.botao):hover::after {
+  transform: scaleX(1);
+}
+.idioma {
+  background: none;
+  border: 1px solid var(--divisoria);
+  border-radius: 8px;
+  padding: 3px 8px;
+  color: var(--secundario);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.idioma:hover {
+  color: var(--texto);
+  border-color: var(--roxo);
+}
+
+/* Barra de progresso da rolagem (só em navegadores com animation-timeline). */
+.progresso {
+  position: fixed;
+  inset: 0 0 auto;
+  height: 3px;
+  z-index: 30;
+  background: linear-gradient(90deg, var(--roxo-2), var(--roxo), #ff6fb5);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  animation: progresso linear both;
+  animation-timeline: scroll(root);
+}
+@supports not (animation-timeline: scroll()) {
+  .progresso {
+    display: none;
+  }
 }
 
 /* ========== 4. Home ========== */
@@ -215,16 +274,34 @@ img {
   text-align: center;
   padding-block: clamp(64px, 11vw, 128px) clamp(56px, 8vw, 96px);
   /* brilho suave na cor do bloco atrás da foto */
-  background: radial-gradient(40% 32% at 50% 18%, color-mix(in srgb, var(--c) 18%, transparent), transparent 70%);
+  background: radial-gradient(40% 32% at 50% 18%, color-mix(in srgb, var(--c) 22%, transparent), transparent 70%);
+}
+.anel {
+  position: relative;
+  width: 132px;
+  height: 132px;
+  margin: 0 auto 28px;
+  padding: 6px;
+  border-radius: 50%;
+  overflow: hidden; /* o anel girando não "vaza" a caixa (e não cria rolagem) */
+  animation: surgir 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+/* Anel em degradê girando devagar atrás da foto. */
+.anel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(var(--roxo), #ff6fb5, var(--roxo-2), #64d2ff, var(--roxo));
+  animation: girar 6s linear infinite;
 }
 .foto {
+  position: relative;
   width: 120px;
   height: 120px;
-  margin: 0 auto 28px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 0 0 3px var(--fundo), 0 0 0 5px var(--c);
-  animation: surgir 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  border: 4px solid var(--fundo);
 }
 .home h1 {
   font-size: clamp(36px, 7.4vw, 88px);
@@ -239,7 +316,10 @@ img {
   white-space: nowrap;
 }
 .digitando {
-  color: var(--c);
+  background: linear-gradient(90deg, var(--roxo), #ff6fb5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 .cursor {
   display: inline-block;
@@ -346,7 +426,14 @@ img {
   border-radius: 18px;
   overflow: hidden;
   background: var(--superficie);
-  box-shadow: 0 0 0 8px var(--superficie-2), 0 30px 80px -30px color-mix(in srgb, var(--c) 55%, transparent);
+  box-shadow:
+    0 0 0 8px var(--superficie-2),
+    -40px 30px 90px -40px color-mix(in srgb, var(--c) 70%, transparent),
+    40px 30px 90px -40px color-mix(in srgb, var(--c2) 70%, transparent);
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.projeto:hover .tela {
+  transform: translateY(-8px) rotate(-0.6deg);
 }
 .tela iframe {
   position: absolute;
@@ -368,7 +455,22 @@ img {
   font-size: clamp(32px, 4vw, 44px);
   letter-spacing: -0.03em;
   line-height: 1.1;
-  margin: 4px 0 14px;
+  margin: 4px 0 18px;
+}
+/* Traço com o degradê do projeto embaixo do nome; cresce quando o projeto aparece. */
+.projeto h3::after {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 4px;
+  margin-top: 12px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--c), var(--c2));
+  transform-origin: 0 50%;
+  transition: transform 0.8s 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.js .projeto:not(.visivel) h3::after {
+  transform: scaleX(0);
 }
 .projeto .texto > p:not(.etiqueta) {
   font-size: 17px;
@@ -416,6 +518,12 @@ img {
 .acervo .botao {
   flex: none;
 }
+.acervo {
+  transition: box-shadow 0.3s;
+}
+.acervo:hover {
+  box-shadow: inset 0 0 0 1px var(--roxo);
+}
 .acervo:hover .botao {
   filter: brightness(1.12);
 }
@@ -459,7 +567,7 @@ img {
 .contato input:focus,
 .contato textarea:focus {
   outline: none;
-  border-color: #ff9f0a;
+  border-color: var(--roxo);
 }
 .contato .botao {
   justify-self: start;
@@ -504,6 +612,16 @@ img {
     filter: blur(6px);
   }
 }
+@keyframes girar {
+  to {
+    transform: rotate(1turn);
+  }
+}
+@keyframes progresso {
+  to {
+    transform: scaleX(1);
+  }
+}
 @keyframes piscar {
   50% {
     opacity: 0;
@@ -519,6 +637,25 @@ img {
   opacity: 1;
   transform: none;
 }
+/* Etiquetas entram uma depois da outra (--i = posição). */
+.js .revelar .chips li {
+  opacity: 0;
+  transform: translateY(8px) scale(0.96);
+  transition: opacity 0.4s, transform 0.4s, color 0.15s, box-shadow 0.15s;
+  transition-delay: calc(var(--i, 0) * 60ms + 200ms), calc(var(--i, 0) * 60ms + 200ms), 0s, 0s;
+}
+.js .revelar.visivel .chips li {
+  opacity: 1;
+  transform: none;
+}
+/* A prévia do projeto entra deslizando de lado. */
+.js .projeto.revelar .tela {
+  translate: -32px 0;
+  transition: translate 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.js .projeto.revelar.visivel .tela {
+  translate: 0 0;
+}
 
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -530,9 +667,16 @@ img {
     animation: none !important;
     transition: none !important;
   }
-  .js .revelar {
+  .js .revelar,
+  .js .revelar .chips li {
     opacity: 1;
     transform: none;
+  }
+  .js .projeto.revelar .tela {
+    translate: 0 0;
+  }
+  .progresso {
+    display: none;
   }
 }
 
@@ -546,12 +690,18 @@ img {
     align-items: flex-start;
   }
 }
+@media (max-width: 440px) {
+  /* Menu não cabe inteiro: "Contato" sai (o botão da seção Sobre leva até lá). */
+  .barra nav a[href='#contact'] {
+    display: none;
+  }
+}
 @media (max-width: 560px) {
   .marca span {
     display: none; /* no celular fica só a foto, para o menu caber */
   }
   .barra nav {
-    gap: 16px;
+    gap: 14px;
   }
   .contato {
     grid-template-columns: 1fr;

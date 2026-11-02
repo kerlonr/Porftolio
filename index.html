@@ -15,96 +15,104 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
 
+  <!--
+    Tradução: elementos com data-i18n / data-i18n-html / data-i18n-attr recebem o texto de
+    scripts/textos.js no idioma escolhido. O inglês abaixo é o padrão (e o que aparece sem JS).
+  -->
   <body>
+    <!-- Barra fina no topo que enche conforme a página rola. -->
+    <div class="progresso" aria-hidden="true"></div>
+
     <!-- ================= BARRA DO TOPO ================= -->
     <header class="barra">
       <div class="conteudo linha">
-        <a class="marca" href="#home" aria-label="Kerlon Ribeiro, back to top">
+        <a class="marca" href="#home" data-i18n-attr="aria-label:voltarTopo" aria-label="Kerlon Ribeiro, back to top">
           <img src="assets/svg/profile.webp" alt="" width="28" height="28" />
           <span>Kerlon Ribeiro</span>
         </a>
         <nav aria-label="Menu">
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-          <a class="botao pequeno" href="assets/files/Curriculum.pdf" download="Kerlon-Ribeiro.pdf">Curriculum</a>
+          <a href="#about" data-i18n="menuSobre">About</a>
+          <a href="#projects" data-i18n="menuProjetos">Projects</a>
+          <a href="#contact" data-i18n="menuContato">Contact</a>
+          <button type="button" class="idioma" id="trocar-idioma" data-i18n-attr="aria-label:trocarIdioma" aria-label="PT: ver em português">PT</button>
+          <a class="botao pequeno" href="assets/files/Curriculum.pdf" download="Kerlon-Ribeiro.pdf" data-i18n="curriculo">Curriculum</a>
         </nav>
       </div>
     </header>
 
     <main>
       <!-- ================= HOME ================= -->
-      <!-- A única animação de entrada: o título "nasce" e a palavra final é digitada. -->
-      <section id="home" class="home conteudo" style="--c: #ff9f0a">
-        <img class="foto" src="assets/svg/profile.webp" alt="Kerlon Ribeiro" width="120" height="120" />
+      <section id="home" class="home conteudo">
+        <div class="anel"><img class="foto" src="assets/svg/profile.webp" alt="Kerlon Ribeiro" width="120" height="120" /></div>
         <h1>
-          Hey, I'm
+          <span data-i18n="oiEuSou">Hey, I'm</span>
           <!-- Linha própria e altura fixa: a palavra digitada não empurra o resto da página. -->
           <span class="linha-digitada"><span class="digitando" id="digitando">Kerlon</span><span class="cursor" aria-hidden="true"></span></span>
         </h1>
-        <p class="lead">
+        <p class="lead" data-i18n="lead">
           An IoT enthusiast and automation trainee with a passion for innovative solutions, seamlessly integrating 3D
           printing technology to drive cutting-edge advancements.
         </p>
         <div class="acoes">
-          <a class="botao grande" href="#projects">Projects</a>
-          <a class="botao grande contorno" href="assets/files/Curriculum.pdf" download="Kerlon-Ribeiro.pdf">Curriculum</a>
+          <a class="botao grande" href="#projects" data-i18n="menuProjetos">Projects</a>
+          <a class="botao grande contorno" href="assets/files/Curriculum.pdf" download="Kerlon-Ribeiro.pdf" data-i18n="curriculo">Curriculum</a>
         </div>
       </section>
 
       <!-- ================= ABOUT ================= -->
       <section id="about" class="secao conteudo">
-        <header class="titulo-secao">
-          <h2>About Me</h2>
-          <p>
+        <header class="titulo-secao revelar">
+          <h2 data-i18n="sobreTitulo">About Me</h2>
+          <p data-i18n="sobreSub">
             IoT and automation enthusiast, creating innovative and sustainable tech solutions. Skilled in 3D printing and
             problem-solving, I transform ideas into impactful results.
           </p>
         </header>
 
         <div class="sobre">
-          <div class="bloco">
-            <h3>Get to know me!</h3>
-            <p>
+          <div class="bloco revelar">
+            <h3 data-i18n="conhecaTitulo">Get to know me!</h3>
+            <p data-i18n-html="conheca1">
               Hey! I'm <strong>Kerlon</strong>, an <strong>IoT enthusiast</strong> and
               <strong>automation trainee</strong> at <strong>TECNICON's Aquário</strong> sector. I've worked on innovative
               projects like <strong>building automation</strong>, <strong>CleanFlow</strong>, and
               <strong>automated filament dryers</strong>, combining IoT and 3D printing.
             </p>
-            <p>
+            <p data-i18n-html="conheca2">
               With experience in <strong>Startup Weekend</strong> and a passion for solving challenges, I turn ideas into
               impactful solutions. Let's connect!
             </p>
-            <a class="botao contorno" href="#contact" style="--c: #f5f5f7">Contact</a>
+            <a class="botao contorno" href="#contact" data-i18n="contato">Contact</a>
           </div>
 
-          <div class="bloco">
-            <h3>My Skills</h3>
-            <!-- Cada categoria tem uma cor. O texto de data-dica aparece ao passar o mouse ou focar. -->
-            <div class="categoria" style="--c: #0a84ff">
+          <div class="bloco revelar">
+            <h3 data-i18n="habilidades">My Skills</h3>
+            <!-- Cada categoria tem uma cor; a dica (data-dica) aparece ao passar o mouse ou focar.
+                 --i escalona a entrada das etiquetas, uma depois da outra. -->
+            <div class="categoria" style="--c: #64d2ff">
               <h4>Frontend</h4>
               <ul class="chips">
-                <li tabindex="0" data-dica="Semantic and accessible structuring of web pages applied in real projects.">HTML</li>
-                <li tabindex="0" data-dica="Responsive layouts, animations, and modern UI styling used in production interfaces.">CSS</li>
-                <li tabindex="0" data-dica="Interactive logic and dynamic behavior applied to real-world web applications.">JavaScript</li>
-                <li tabindex="0" data-dica="UI/UX prototyping focused on usability and clear visual communication.">Figma</li>
+                <li tabindex="0" style="--i: 0" data-i18n-attr="data-dica:dicaHtml" data-dica="Semantic and accessible structuring of web pages applied in real projects.">HTML</li>
+                <li tabindex="0" style="--i: 1" data-i18n-attr="data-dica:dicaCss" data-dica="Responsive layouts, animations, and modern UI styling used in production interfaces.">CSS</li>
+                <li tabindex="0" style="--i: 2" data-i18n-attr="data-dica:dicaJs" data-dica="Interactive logic and dynamic behavior applied to real-world web applications.">JavaScript</li>
+                <li tabindex="0" style="--i: 3" data-i18n-attr="data-dica:dicaFigma" data-dica="UI/UX prototyping focused on usability and clear visual communication.">Figma</li>
               </ul>
             </div>
-            <div class="categoria" style="--c: #30d158">
-              <h4>Programming &amp; Systems</h4>
+            <div class="categoria" style="--c: #bf5af2">
+              <h4 data-i18n="catProgramacao">Programming &amp; Systems</h4>
               <ul class="chips">
-                <li tabindex="0" data-dica="Performance-oriented programming applied to embedded and automation systems.">C++</li>
-                <li tabindex="0" data-dica="Rapid prototyping and automation using sensors and actuators in practical projects.">Arduino</li>
-                <li tabindex="0" data-dica="IoT development with wireless communication, including ESP-NOW and Wi-Fi.">ESP32</li>
-                <li tabindex="0" data-dica="Embedded computing applied to system automation and service integration.">Raspberry Pi</li>
+                <li tabindex="0" style="--i: 4" data-i18n-attr="data-dica:dicaCpp" data-dica="Performance-oriented programming applied to embedded and automation systems.">C++</li>
+                <li tabindex="0" style="--i: 5" data-i18n-attr="data-dica:dicaArduino" data-dica="Rapid prototyping and automation using sensors and actuators in practical projects.">Arduino</li>
+                <li tabindex="0" style="--i: 6" data-i18n-attr="data-dica:dicaEsp32" data-dica="IoT development with wireless communication, including ESP-NOW and Wi-Fi.">ESP32</li>
+                <li tabindex="0" style="--i: 7" data-i18n-attr="data-dica:dicaRasp" data-dica="Embedded computing applied to system automation and service integration.">Raspberry Pi</li>
               </ul>
             </div>
-            <div class="categoria" style="--c: #ff9f0a">
-              <h4>Hardware &amp; Making</h4>
+            <div class="categoria" style="--c: #ff6fb5">
+              <h4 data-i18n="catHardware">Hardware &amp; Making</h4>
               <ul class="chips">
-                <li tabindex="0" data-dica="Design and production of functional parts for real automation and IoT solutions.">3D Printing</li>
-                <li tabindex="0" data-dica="Technical 3D modeling focused on mechanical and functional components.">Fusion360</li>
-                <li tabindex="0" data-dica="Integration of sensors, actuators, and control logic in applied automation systems.">Robotics</li>
+                <li tabindex="0" style="--i: 8" data-i18n-attr="data-dica:dica3d" data-dica="Design and production of functional parts for real automation and IoT solutions." data-i18n="imp3d">3D Printing</li>
+                <li tabindex="0" style="--i: 9" data-i18n-attr="data-dica:dicaFusion" data-dica="Technical 3D modeling focused on mechanical and functional components.">Fusion360</li>
+                <li tabindex="0" style="--i: 10" data-i18n-attr="data-dica:dicaRobotica" data-dica="Integration of sensors, actuators, and control logic in applied automation systems." data-i18n="robotica">Robotics</li>
               </ul>
             </div>
           </div>
@@ -112,25 +120,26 @@
       </section>
 
       <!-- ================= PROJECTS ================= -->
+      <!-- Cada projeto usa as cores do próprio site: --c (texto/botões) e --c2 (fim do degradê). -->
       <section id="projects" class="secao conteudo">
-        <header class="titulo-secao">
-          <h2>Projects</h2>
-          <p>Some of the personal and professional projects I created, each one with its own case study.</p>
+        <header class="titulo-secao revelar">
+          <h2 data-i18n="projetosTitulo">Projects</h2>
+          <p data-i18n="projetosSub">Some of the personal and professional projects I created, each one with its own case study.</p>
         </header>
 
-        <!-- Cada projeto: prévia ao vivo do site (iframe) dentro de uma "tela" + explicação. -->
-        <article class="projeto revelar" style="--c: #ff5a5f">
+        <!-- Museu Digital: vermelho do próprio site (#e50914), clareado para ter contraste no preto. -->
+        <article class="projeto revelar" style="--c: #ff5a5f; --c2: #e50914">
           <div class="tela" data-largura="1280">
-            <iframe data-src="https://museu-digital.vercel.app" title="Museu Digital preview" tabindex="-1"></iframe>
+            <iframe data-src="https://museu-digital.vercel.app" title="Museu Digital preview" tabindex="-1" scrolling="no"></iframe>
           </div>
           <div class="texto">
-            <p class="etiqueta">Web, at Tecnicon</p>
+            <p class="etiqueta" data-i18n="museuEtiqueta">Web, at Tecnicon</p>
             <h3>Museu Digital</h3>
-            <p>
+            <p data-i18n-html="museu1">
               A project designed to showcase the work my coworkers and I accomplished during our internship at
               <a href="https://tecnicon.com.br">Tecnicon - Sistemas Gerenciais</a>.
             </p>
-            <p>
+            <p data-i18n="museu2">
               Built like a streaming platform, it gathers the projects of Aquário (Tecnicon's automation team), the events
               we competed in with our medals, the team and a photo gallery.
             </p>
@@ -140,24 +149,25 @@
               <li>JavaScript</li>
             </ul>
             <div class="acoes">
-              <a class="botao" href="https://museu-digital.vercel.app" target="_blank" rel="noreferrer" aria-label="Visit the Museu Digital site">Visit site</a>
-              <a class="botao contorno" href="https://github.com/kerlonr/Museu-Digital" target="_blank" rel="noreferrer" aria-label="Museu Digital source code">Code</a>
+              <a class="botao" href="https://museu-digital.vercel.app" target="_blank" rel="noreferrer" data-i18n="visitarSite" data-i18n-attr="aria-label:visitarMuseu" aria-label="Visit the Museu Digital site">Visit site</a>
+              <a class="botao contorno" href="https://github.com/kerlonr/Museu-Digital" target="_blank" rel="noreferrer" data-i18n="codigo" data-i18n-attr="aria-label:codigoMuseu" aria-label="Museu Digital source code">Code</a>
             </div>
           </div>
         </article>
 
-        <article class="projeto revelar" style="--c: #30d158">
+        <!-- Bifrost: degradê azul → roxo da landing page (#3498db → #9b59b6). -->
+        <article class="projeto revelar" style="--c: #5dade2; --c2: #9b59b6">
           <div class="tela" data-largura="1280">
-            <iframe data-src="https://bifrost.kerlonr.com.br" title="Bifrost preview" tabindex="-1"></iframe>
+            <iframe data-src="https://bifrost.kerlonr.com.br" title="Bifrost preview" tabindex="-1" scrolling="no"></iframe>
           </div>
           <div class="texto">
-            <p class="etiqueta">IoT landing page</p>
+            <p class="etiqueta" data-i18n="bifrostEtiqueta">IoT landing page</p>
             <h3>Bifrost</h3>
-            <p>
+            <p data-i18n-html="bifrost1">
               A project developed to present <a href="https://bifrost.kerlonr.com.br">Bifrost</a>, an intelligent
               communication hub designed to connect and manage devices seamlessly and efficiently.
             </p>
-            <p>
+            <p data-i18n="bifrost2">
               Sensors that speak different wireless "languages" (ESP-NOW, LoRa, MQTT) send their messages to gateways, and a
               Raspberry Pi decides where each message goes, translating between protocols.
             </p>
@@ -167,8 +177,8 @@
               <li>JavaScript</li>
             </ul>
             <div class="acoes">
-              <a class="botao" href="https://bifrost.kerlonr.com.br" target="_blank" rel="noreferrer" aria-label="Visit the Bifrost site">Visit site</a>
-              <a class="botao contorno" href="https://github.com/the-bifrost/landing-page" target="_blank" rel="noreferrer" aria-label="Bifrost landing page source code">Code</a>
+              <a class="botao" href="https://bifrost.kerlonr.com.br" target="_blank" rel="noreferrer" data-i18n="visitarSite" data-i18n-attr="aria-label:visitarBifrost" aria-label="Visit the Bifrost site">Visit site</a>
+              <a class="botao contorno" href="https://github.com/the-bifrost/landing-page" target="_blank" rel="noreferrer" data-i18n="codigo" data-i18n-attr="aria-label:codigoBifrost" aria-label="Bifrost landing page source code">Code</a>
             </div>
           </div>
         </article>
@@ -176,35 +186,35 @@
         <!-- Todos os outros projetos ficam explicados no Acervo. -->
         <a class="acervo revelar" href="https://acervo.kerlonr.com.br">
           <span>
-            <strong>Want to see everything?</strong>
-            Robots, IoT gateways, PLC data collectors, games and web systems, all explained in the Acervo.
+            <strong data-i18n="acervoTitulo">Want to see everything?</strong>
+            <span data-i18n="acervoTexto">Robots, IoT gateways, PLC data collectors, games and web systems, all explained in the Acervo.</span>
           </span>
-          <span class="botao" style="--c: #f5f5f7">Open the Acervo</span>
+          <span class="botao" data-i18n="acervoBotao">Open the Acervo</span>
         </a>
       </section>
 
       <!-- ================= CONTACT ================= -->
       <section id="contact" class="secao conteudo">
-        <header class="titulo-secao">
-          <h2>Contact</h2>
-          <p>Feel free to reach out! Whether you have a question, an idea, or just want to connect, I'd love to hear from you.</p>
+        <header class="titulo-secao revelar">
+          <h2 data-i18n="contatoTitulo">Contact</h2>
+          <p data-i18n="contatoSub">Feel free to reach out! Whether you have a question, an idea, or just want to connect, I'd love to hear from you.</p>
         </header>
 
         <!-- O formulário é enviado pelo FormSubmit direto para o meu e-mail (sem servidor próprio). -->
-        <form class="contato" action="https://formsubmit.co/kerlon.ribeiro1227@gmail.com" method="POST">
+        <form class="contato revelar" action="https://formsubmit.co/kerlon.ribeiro1227@gmail.com" method="POST">
           <label>
-            Name
-            <input required type="text" name="name" placeholder="Enter your name" autocomplete="name" />
+            <span data-i18n="nome">Name</span>
+            <input required type="text" name="name" placeholder="Enter your name" data-i18n-attr="placeholder:nomePh" autocomplete="name" />
           </label>
           <label>
-            Email
-            <input required type="email" name="email" placeholder="Enter your email" autocomplete="email" />
+            <span data-i18n="email">Email</span>
+            <input required type="email" name="email" placeholder="Enter your email" data-i18n-attr="placeholder:emailPh" autocomplete="email" />
           </label>
           <label class="inteiro">
-            Message
-            <textarea required name="message" rows="6" placeholder="Enter your message"></textarea>
+            <span data-i18n="mensagem">Message</span>
+            <textarea required name="message" rows="6" placeholder="Enter your message" data-i18n-attr="placeholder:mensagemPh"></textarea>
           </label>
-          <button type="submit" class="botao grande" style="--c: #ff9f0a">Send message</button>
+          <button type="submit" class="botao grande" data-i18n="enviar">Send message</button>
         </form>
       </section>
     </main>
@@ -213,7 +223,7 @@
     <footer class="conteudo rodape">
       <div>
         <strong>Kerlon Ribeiro</strong>
-        <p>
+        <p data-i18n="rodape">
           I'm passionate about technology and innovation, always on the lookout for creative solutions in automation and
           IoT. I love turning ideas into reality!
         </p>
@@ -226,6 +236,7 @@
       <p class="copyright">© <span id="ano">2026</span> Kerlon Ribeiro</p>
     </footer>
 
+    <script src="scripts/textos.js"></script>
     <script src="scripts/main.js"></script>
   </body>
 </html>
