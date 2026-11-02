@@ -62,10 +62,6 @@ const TEXTOS = {
     codigoAtlas: 'Código do Atlas',
     acervoAtlas: 'https://acervo.kerlonr.com.br/projetos/atlas',
 
-    asimovEtiqueta: 'Automação industrial, na Tecnicon',
-    asimov1: 'Um coletor que lê dados de máquinas industriais (CLPs e IHMs) pela rede e envia para o servidor. Funciona com WEG, Siemens, Rockwell, Mitsubishi, Omron e qualquer equipamento Modbus, OPC UA ou MQTT.',
-    asimov2: 'Ele só lê e nunca escreve no CLP, então é seguro para máquinas em produção. Os dados esperam numa fila até chegarem ao servidor, então nada se perde se a rede cair.',
-    acervoAsimov: 'https://acervo.kerlonr.com.br/projetos/asimov',
 
     camaraEtiqueta: 'Jogo',
     camara1: 'Jogo 2D de mineração e horror numa mina fictícia perto de Chernobyl, em abril de 1986. Você é um mineiro do Turno C e descobre aos poucos o que existe atrás da Câmara 7.',
@@ -74,7 +70,7 @@ const TEXTOS = {
     codigoCamara: 'Código do Câmara 7',
 
     acervoTitulo: 'Quer ver tudo?',
-    acervoTexto: 'Robôs, gateways IoT, coletores de dados de CLP, jogos e sistemas web, todos explicados no Acervo.',
+    acervoTexto: 'Robôs, gateways IoT, jogos e sistemas web, todos explicados no Acervo.',
     acervoBotao: 'Abrir o Acervo',
     acervoLink: 'https://acervo.kerlonr.com.br/',
 
