@@ -3,6 +3,7 @@
 //   2. Efeito de digitação no título ("Hey, I'm ...")
 //   3. Elementos aparecendo ao rolar a página
 //   4. Prévias (iframes): carregam só perto da tela e são escaladas para caber
+//   Carta 3D: a tela do projeto inclina e vem para a frente onde o mouse está
 //   5. Ano do rodapé
 
 document.documentElement.classList.add('js'); // o CSS só esconde o que anima quando há JS
@@ -137,6 +138,29 @@ document.querySelectorAll('.tela iframe[data-src]').forEach((iframe) => {
   ajustarTela.observe(iframe.parentElement);
   carregarPrevia.observe(iframe.parentElement);
 });
+
+// ---------- Carta 3D ----------
+// Ao passar o mouse, a tela do projeto inclina para o lado do mouse e vem para a frente.
+// Só com mouse de verdade (no celular não existe "passar por cima") e sem pedido de menos movimento.
+if (!poucoMovimento && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  document.querySelectorAll('.tela').forEach((tela) => {
+    tela.addEventListener('pointermove', (e) => {
+      const caixa = tela.getBoundingClientRect();
+      const x = (e.clientX - caixa.left) / caixa.width; // 0 (esquerda) a 1 (direita)
+      const y = (e.clientY - caixa.top) / caixa.height; // 0 (topo) a 1 (base)
+      tela.classList.add('inclinando');
+      tela.style.setProperty('--rx', (x - 0.5).toFixed(3));
+      tela.style.setProperty('--ry', (y - 0.5).toFixed(3));
+      tela.style.setProperty('--mx', `${(x * 100).toFixed(1)}%`);
+      tela.style.setProperty('--my', `${(y * 100).toFixed(1)}%`);
+      tela.style.setProperty('--perto', '1');
+    });
+    tela.addEventListener('pointerleave', () => {
+      tela.classList.remove('inclinando');
+      ['--rx', '--ry', '--perto'].forEach((v) => tela.style.removeProperty(v)); // volta ao repouso
+    });
+  });
+}
 
 // ---------- 5. Ano do rodapé ----------
 document.getElementById('ano').textContent = String(new Date().getFullYear());

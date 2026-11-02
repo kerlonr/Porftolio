@@ -411,10 +411,33 @@ img {
     0 0 0 8px var(--superficie-2),
     -40px 30px 90px -40px color-mix(in srgb, var(--c) 70%, transparent),
     40px 30px 90px -40px color-mix(in srgb, var(--c2) 70%, transparent);
-  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+  /*
+    Carta 3D: o JS (scripts/main.js, "Carta 3D") põe em --rx/--ry a posição do mouse
+    (-0.5 a 0.5) e em --mx/--my a mesma posição em %. O lado onde o mouse está vem
+    para a frente, e a tela toda se aproxima (translateZ + scale).
+  */
+  --rx: 0;
+  --ry: 0;
+  --perto: 0; /* 1 com o mouse em cima, 0 fora */
+  transform: perspective(900px) rotateY(calc(var(--rx) * -16deg)) rotateX(calc(var(--ry) * 12deg))
+    translateZ(calc(var(--perto) * 40px)) scale(calc(1 + var(--perto) * 0.03));
+  transition: transform var(--duracao-carta, 0.6s) cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: transform;
 }
-.projeto:hover .tela {
-  transform: translateY(-8px) rotate(-0.6deg);
+/* Enquanto o mouse se move, a resposta é quase imediata; ao sair, volta devagar. */
+.tela.inclinando {
+  --duracao-carta: 0.12s;
+}
+/* Reflexo de luz que segue o mouse por cima da tela. */
+.tela::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgb(255 255 255 / 0.16), transparent 50%);
+  opacity: var(--perto);
+  transition: opacity 0.4s;
 }
 .tela iframe {
   position: absolute;
@@ -641,7 +664,9 @@ img {
 /* A prévia do projeto entra deslizando de lado. */
 .js .projeto.revelar .tela {
   translate: -32px 0;
-  transition: translate 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition:
+    translate 0.9s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform var(--duracao-carta, 0.6s) cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 .js .projeto.revelar.visivel .tela {
   translate: 0 0;
